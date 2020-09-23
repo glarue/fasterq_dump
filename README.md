@@ -12,7 +12,40 @@ Otherwise, you can clone the `biogl` repo and source it locally (to run from any
 
 ### Usage info
 
-# __`fasterq_dump`__
+```
+usage: fasterq_dump [-h] [-f FILE] [-k] [-t] [-w] [-m]
+                    [-u {all,curl,wget,prefetch}] [--log]
+                    [accessions [accessions ...]]
+
+A program to run fastq-dump sequentially on a list of accession numbers. Will
+automatically detect if reads are single- or paired-end and will run fastq-
+dump accordingly, adding proper ID suffixes as needed. Accession numbers may
+be provided directly, or in a file using the -f option. If provided directly,
+accessions may be comma or space separated, or hyphen-separated to specify a
+range, e.g. SRR123455, SRR123456, SRR123457 or SRR123455-SRR123457. Any other
+args will be passed to fastq-dump.
+
+positional arguments:
+  accessions            Space, comma or hyphen (range) separated list of SRA
+                        accession numbers (e.g. SRR123456 SRR123457 or
+                        SRR123456-SRR123460)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f FILE, --file FILE  File with SRA accession numbers on separate lines
+  -k, --keep_sra_files  Keep SRA files after dumping to FASTQ format
+  -t, --trinity_compatible_ids
+                        rename read IDs in paired-end data to ensure
+                        downstream compatibility with Trinity
+  -w, --overwrite       overwrite any matching local SRA/FASTQ files
+  -m, --manual          do not auto-detect read type (manual entry of e.g. "--
+                        split-files" required)
+  -u {all,curl,wget,prefetch}, --utilities {all,curl,wget,prefetch}
+                        specify the utilities(s) to use to fetch the SRA
+                        file(s) (default: all)
+  --log                 create a log file with the success/failure status for
+                        each acc
+```
 
 ## __[tl;dr]__
 
