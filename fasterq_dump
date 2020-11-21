@@ -349,6 +349,9 @@ def fastq_exists(acc, paired=False):
         fns = ['{}_1.fastq'.format(acc), '{}_2.fastq'.format(acc)]
     else:
         fns = ['{}.fastq'.format(acc)]
+    gzipped = ['{}.gz'.format(f) for f in fns]
+    fns.extend(gzipped)
+    #TODO modify this call to not search sub-dirs
     existing_files = recursive_items(pattern='{}.*fastq.*'.format(acc))
     files_already_present = True
     for f in fns:
