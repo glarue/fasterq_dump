@@ -1,14 +1,20 @@
 ### Dependencies
 
-This script needs the [biogl](https://github.com/glarue/biogl) module to function properly. If you use (or can get) `pip`, you can simply do
+#### biogl
+
+This script needs my own [biogl](https://github.com/glarue/biogl) module to function properly. If you use (or can get) `pip`, you can simply do
 
 ```python3 -m pip install biogl```
 
-to add the package to a location reachable by your Python installation. 
+to add the package to a location reachable by your Python installation.
 
 Otherwise, you can clone the `biogl` repo and source it locally (to run from anywhere, you'll need to add it to your PYTHONPATH environmental variable, a process that varies by OS):
 
 ```git clone https://github.com/glarue/biogl.git```
+
+#### SRA-Tools
+
+Additionally, since `fasterq_dump` is just a wrapper script, you will also need to have installed NCBI's [SRA-Tools](http://ncbi.github.io/sra-tools/)
 
 ### Usage info
 
