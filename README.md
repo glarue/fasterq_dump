@@ -54,13 +54,15 @@ Downloads sequencing data in FASTQ format from the [NCBI Short Read Archive](htt
 ## __[details]__
 
 `fasterq_dump` is a wrapper script for NCBI's SRA-to-FASTQ conversion program `fastq-dump`, part of its [SRA-Tools package](http://ncbi.github.io/sra-tools/). `fasterq_dump` has the following advantages over vanilla `fastq-dump`:
-* it is generally faster*
+* it is generally faster<sup>&#8224;</sup>
 * it auto-detects read type – either single- or paired-end – and splits the output accordingly
 * it formats the read IDs in paired-end data for compatability with Trinity (appending /1 or /2 to the ends of the IDs)
 * it can be run on a list of multiple SRA accession numbers via either direct input on the command line or a separate text file
 * it does not add files to the system SRA cache
 
-\* Benchmarks:
+<sup>&#8224;</sup>Benchmarks:
+
+![speed comparison](https://github.com/glarue/fasterq_dump/blob/master/images/fasterq_dump-vs-fastq-dump_chart.png)
 
 * (PE) 5.4 M reads (1.1 Gbp): 4.81 min; ~1.12 M reads/min; ~229 Mbp/min
 * (PE) 199.6 M reads (30.5 Gbp): 2.594 hr; ~1.28 M reads/min; ~196 Mbp/min
