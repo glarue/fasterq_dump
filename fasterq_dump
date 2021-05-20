@@ -112,47 +112,6 @@ def paired_check(acc):
     return read_type
 
 
-# def fetch_sra(acc, overwrite=False):
-#     """
-#     Grabs an SRA file from NCBI.
-
-#     """
-#     sra_filename = '{}.sra'.format(acc)
-
-#     # if local file already exists, use it instead
-#     if os.path.isfile(sra_filename) and overwrite is False:
-#         print(
-#             '[#] Using existing SRA file: {}'.format(sra_filename),
-#             file=sys.stderr
-#         )
-#         return sra_filename
-
-#     alpha = acc[:3]
-#     first_six = acc[:6]
-
-#     # build file path to SRA data
-#     base_path = 'ftp://ftp-trace.ncbi.nlm.nih.gov'
-
-#     # pattern of path:
-#     #  /sra/sra-instant/reads/ByRun/sra/{SRR|ERR|DRR}/
-#     # <first 6 characters of accession>/<accession>/<accession>.sra
-#     path_bits = [alpha, first_six, acc, sra_filename]
-#     relative_path = '/'.join(path_bits)
-#     sra_path = '/sra/sra-instant/reads/ByRun/sra/{}'.format(relative_path)
-#     full_path = base_path + sra_path
-
-#     # old address style first
-#     ret_val = subprocess.run(['wget', full_path, '-O', sra_filename]).returncode
-#     if ret_val != 0:
-#         print(
-#             '[!] Could not find SRA file at {}'
-#             '\nTrying alternative'.format(full_path)
-#         )
-#         full_path = 'https://sra-download.ncbi.nlm.nih.gov/sos/sra-pub-run-1/{}/{}.1'.format(acc, acc)
-#         ret_val = subprocess.run(['wget', '--user-agent="Mozilla"', full_path, '-O', sra_filename]).returncode
-
-#     return sra_filename
-
 def build_sra_path(acc):
     alpha = acc[:3]
     first_six = acc[:6]
@@ -345,24 +304,6 @@ def clean_args(arguments):
         final_args += acc_range
 
     return final_args
-
-
-# def fastq_exists(acc, paired=False):
-#     if paired:
-#         fns = ['{}_1.fastq'.format(acc), '{}_2.fastq'.format(acc)]
-#     else:
-#         fns = ['{}.fastq'.format(acc)]
-#     gzipped = ['{}.gz'.format(f) for f in fns]
-#     fns.extend(gzipped)
-#     #TODO modify this call to not search sub-dirs
-#     existing_files = recursive_items(pattern='{}.*fastq.*'.format(acc))
-#     files_already_present = True
-#     for f in fns:
-#         if not any(f in e for e in existing_files):
-#             files_already_present = False
-#             break
-    
-#     return files_already_present
 
 
 def fastq_exists(acc, paired=False):
