@@ -427,6 +427,11 @@ parser.add_argument(
     action='store_true'
 )
 parser.add_argument(
+    '--no_dump',
+    help='download the SRA file(s), but don\'t run fastq-dump',
+    action='store_true'
+)
+parser.add_argument(
     '-w',
     '--overwrite',
     help=(
@@ -504,7 +509,7 @@ for acc in accs:
     acc_success = False
     # fq_present = fastq_exists(acc, paired=paired_flag)
     fq_present = fastq_exists(acc)
-    if fq_present and not args.overwrite:
+    if fq_present and not (args.overwrite or args.no_dump):
         print(
             '[!] Skipping fastq-dump on {} because existing FASTQ files found'
             .format(acc), file=sys.stderr
@@ -526,6 +531,8 @@ for acc in accs:
         # we don't want to pre-fetch SRA since we're
         # only getting a subset of the reads
         acc_filename = acc
+    if args.no_dump:  # bypass the remainder of loop if we just want SRAs
+        continue
     if acc_filename is None:
         continue
     read_type = paired_check(acc_filename)
