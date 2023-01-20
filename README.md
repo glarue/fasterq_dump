@@ -68,7 +68,7 @@ Downloads sequencing data in FASTQ format from the [NCBI Short Read Archive](htt
 
 <sup>&#8224;</sup>Benchmarks:
 
-![speed comparison](https://github.com/glarue/fasterq_dump/blob/master/images/fasterq_dump-vs-fastq-dump_chart.png)
+![speed comparison](https://github.com/glarue/fasterq_dump/blob/main/images/fasterq_dump-vs-fastq-dump_chart.png)
 
 * (PE) 5.4 M reads (1.1 Gbp): 4.81 min; ~1.12 M reads/min; ~229 Mbp/min
 * (PE) 199.6 M reads (30.5 Gbp): 2.594 hr; ~1.28 M reads/min; ~196 Mbp/min
